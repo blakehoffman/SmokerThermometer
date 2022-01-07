@@ -16,6 +16,8 @@ int setup_display() {
 
     print_to_display("Welcome");
     delay(2000);
+
+    return 1;
 }
 
 void print_to_display(char* string) {
