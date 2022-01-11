@@ -1,3 +1,15 @@
+#include <iostream>
+
+namespace FoodProbeConfiguration
+{
+    constexpr inline int pinNumber = 0xA1;
+}
+
+namespace GrateProbeConfiguration
+{
+    constexpr inline int pinNumber = 0xA2;
+}
+
 namespace OLEDConfiguration
 {
     constexpr inline int screenHeight = 64;

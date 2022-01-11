@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include "configuration.h";
+#include "ADC/ADC.h";
 
 Adafruit_SSD1306 display(OLEDConfiguration::screenWidth, OLEDConfiguration::screenHeight, &Wire, -1);
+ADC foodProbe(FoodProbeConfiguration::pinNumber);
+ADC grateProbe(GrateProbeConfiguration::pinNumber);
 
 int main()
 {
     bool setupOLEDIsSuccessful = SetupOLED();
+
+    while (true)
+    {
+    }
 }
 
 bool setupOLED()
