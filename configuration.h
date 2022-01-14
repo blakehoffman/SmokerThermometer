@@ -30,3 +30,9 @@ namespace ResistorTwoConfiguration
 {
     constexpr inline float Resistance = 10000;
 }
+
+namespace WifiConfiguration
+{
+    constexpr inline char wifiName[] = "network name";
+    constexpr inline char wifiPassword[] = "wifi password";
+}

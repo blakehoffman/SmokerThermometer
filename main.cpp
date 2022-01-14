@@ -2,6 +2,7 @@
 #include "configuration.h";
 #include "ADC/ADC.h";
 #include "Calculations/Calculations.h";
+#include "arduino_secrets.h";
 
 Adafruit_SSD1306 display(OLEDConfiguration::screenWidth, OLEDConfiguration::screenHeight, &Wire, -1);
 ADC foodProbe(FoodProbeConfiguration::pinNumber);
@@ -10,6 +11,8 @@ ADC grateProbe(GrateProbeConfiguration::pinNumber);
 int main()
 {
     bool setupOLEDIsSuccessful = setupOLED();
+    connectToWifi();
+
     const long interval = 5000;
     unsigned long previousMillis = 0;
     unsigned long currentMillis = 0;
@@ -29,6 +32,11 @@ int main()
             Serial.print("Food probe temp: ", grateProbe);
         }
     }
+}
+
+void connectToWifi()
+{
+    WiFi.begin(WifiConfiguration::wifiName, WifiConfiguration::wifiPassword);
 }
 
 float readTemp(ADC probe)
@@ -52,6 +60,5 @@ bool setupOLED()
         return false;
     }
 
-    display.print_ln("Welcome");
     return true;
 }
