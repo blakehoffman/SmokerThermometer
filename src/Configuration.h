@@ -33,6 +33,6 @@ namespace ResistorTwoConfiguration
 
 namespace WifiConfiguration
 {
-    constexpr inline char wifiName[] = "network name";
-    constexpr inline char wifiPassword[] = "wifi password";
+    char wifiName[] = "network name";
+    char wifiPassword[] = "wifi password";
 }
