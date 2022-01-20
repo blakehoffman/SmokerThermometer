@@ -27,7 +27,6 @@ void loop() {
     if (currentMillis - previousMillis >= interval)
     {
         previousMillis = currentMillis;
-        Serial.println("here");
         //float foodProbeTemp = readTemp(foodProbe);
         //float grateProbe = readTemp(grateProbe);
 
