@@ -7,6 +7,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <WiFi.h>
+#include <Arduino.h>
 
 Adafruit_SSD1306 display(OLEDConfiguration::screenWidth, OLEDConfiguration::screenHeight, &Wire, -1);
 AnalogDigitalConversion foodProbe(FoodProbeConfiguration::pinNumber);
@@ -16,23 +17,27 @@ const long interval = 5000;
 unsigned long previousMillis = 0;
 unsigned long currentMillis = 0;
 
-void setup() {
+void setup()
+{
     bool setupOLEDIsSuccessful = setupOLED();
+    Serial.begin(9600);
     //connectToWifi();
 }
 
-void loop() {
+void loop()
+{
     currentMillis = millis();
 
     if (currentMillis - previousMillis >= interval)
     {
+        int sensorValue = analogRead(14);\
         previousMillis = currentMillis;
-        //float foodProbeTemp = readTemp(foodProbe);
+        float foodProbeTemp = readTemp(foodProbe);
         //float grateProbe = readTemp(grateProbe);
 
-        printTemp(20, "Food");
+        printTemp(foodProbeTemp, "Food");
         delay(2500);
-        printTemp(250,"Pit");
+        printTemp(250, "Pit");
     }
 }
 
@@ -44,6 +49,7 @@ void connectToWifi()
 float readTemp(AnalogDigitalConversion probe)
 {
     float probeVoltage = probe.getVoltage();
+    Serial.println(probeVoltage);
     float temperature = Calculations::getTemp(
         ArduinoConfiguration::VoltageSupply,
         probeVoltage,
@@ -61,7 +67,7 @@ void printTemp(float temp, String description)
     display.clearDisplay();
     display.setTextSize(4);
     display.setTextColor(SSD1306_WHITE);
-    display.setCursor(0,0);
+    display.setCursor(0, 0);
     display.println(description);
     display.println(tempText);
     display.display();

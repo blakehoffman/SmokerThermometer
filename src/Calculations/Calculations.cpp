@@ -2,12 +2,12 @@
 
 namespace Calculations
 {
-    float getTemp(float voltageSupply, float currentVoltage, float r2, float steinhartA, float steinhartB, float steinhartC)
+    float getTemp(float voltageSupply, float currentVoltage, float r1, float steinhartA, float steinhartB, float steinhartC)
     {
-        float rT, temp, tInv, ln;
+        float r2, temp, tInv, ln;
 
-        rT = r2 * (voltageSupply - currentVoltage) / currentVoltage;
-        ln = log(rT);
+        r2 = (r1 * currentVoltage) / (voltageSupply - currentVoltage);
+        ln = log(r2);
         tInv = steinhartA + steinhartB * ln + steinhartC * pow(ln, 3);
         temp = 1.8 * (1.0 / tInv - 273.15) + 32.0;
 

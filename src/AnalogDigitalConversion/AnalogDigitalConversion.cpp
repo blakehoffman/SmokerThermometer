@@ -1,6 +1,6 @@
 #include "AnalogDigitalConversion.h"
 #include "../Standard/Standard.h"
-#include "Arduino.h"
+#include <Arduino.h>
 
 AnalogDigitalConversion::AnalogDigitalConversion(int pinNumber)
 {
@@ -10,7 +10,7 @@ AnalogDigitalConversion::AnalogDigitalConversion(int pinNumber)
 float AnalogDigitalConversion::getVoltage()
 {
     int sensorValue = analogRead(pinNumber);
-    return sensorValue / (5.0 / 1023.0);
+    return sensorValue * (5.0 / 1023.0);
 }
 
 bool AnalogDigitalConversion::setup()

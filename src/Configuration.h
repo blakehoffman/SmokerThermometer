@@ -5,17 +5,17 @@ namespace ArduinoConfiguration
 
 namespace FoodProbeConfiguration
 {
-    constexpr inline int pinNumber = 0xA1;
+    constexpr inline int pinNumber = 14;
 }
 
 namespace GeneralProbeConfiguration
 {
-    constexpr float steinConstants[] = {2.4723753e-04, 2.3402251e-04, 1.3879768e-07};
+    constexpr float steinConstants[] = {7.3431401e-4, 2.1574370e-4, 9.5156860e-8};
 }
 
 namespace GrateProbeConfiguration
 {
-    constexpr inline int pinNumber = 0xA2;
+    constexpr inline int pinNumber = 15;
 }
 
 namespace OLEDConfiguration
@@ -26,7 +26,7 @@ namespace OLEDConfiguration
     constexpr inline int screenAddress = 0x3C;
 }
 
-namespace ResistorTwoConfiguration
+namespace ResistorOneConfiguration
 {
     constexpr inline float Resistance = 10000;
 }
