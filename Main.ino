@@ -30,14 +30,14 @@ void loop()
 
     if (currentMillis - previousMillis >= interval)
     {
-        int sensorValue = analogRead(14);\
+        int sensorValue = analogRead(14);
         previousMillis = currentMillis;
         float foodProbeTemp = readTemp(foodProbe);
-        //float grateProbe = readTemp(grateProbe);
+        float grateProbeTemp = readTemp(grateProbe);
 
         printTemp(foodProbeTemp, "Food");
         delay(2500);
-        printTemp(250, "Pit");
+        printTemp(grateProbeTemp, "Grate");
     }
 }
 
@@ -49,11 +49,11 @@ void connectToWifi()
 float readTemp(AnalogDigitalConversion probe)
 {
     float probeVoltage = probe.getVoltage();
-    Serial.println(probeVoltage);
+
     float temperature = Calculations::getTemp(
-        ArduinoConfiguration::VoltageSupply,
+        ArduinoConfiguration::voltageSupply,
         probeVoltage,
-        ResistorTwoConfiguration::Resistance,
+        ResistorOneConfiguration::Resistance,
         GeneralProbeConfiguration::steinConstants[0],
         GeneralProbeConfiguration::steinConstants[1],
         GeneralProbeConfiguration::steinConstants[2]);

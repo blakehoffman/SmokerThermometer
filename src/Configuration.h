@@ -1,6 +1,11 @@
+namespace AnalogToDigitalConversionConfiguration
+{
+    constexpr inline int sampleRate = 100;
+}
+
 namespace ArduinoConfiguration
 {
-    constexpr inline float VoltageSupply = 5.0;
+    constexpr inline float voltageSupply = 5.0;
 }
 
 namespace FoodProbeConfiguration
@@ -33,6 +38,6 @@ namespace ResistorOneConfiguration
 
 namespace WifiConfiguration
 {
-    char wifiName[] = "network name";
-    char wifiPassword[] = "wifi password";
+    constexpr inline char wifiName[] = "network name";
+    constexpr inline char wifiPassword[] = "wifi password";
 }
